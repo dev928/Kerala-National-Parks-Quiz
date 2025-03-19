@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8e8;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .park-container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,100,0,0.1);
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    
+    .park-header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/api/placeholder/800/200');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .park-title {
+      margin: 0;
+      font-size: 24px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .question-container {
+      padding: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      background-color: rgba(255,255,255,0.9);
+    }
+    
+    .question {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #1b5e20;
+    }
+    
+    .options {
+      margin-left: 20px;
+    }
+    
+    .option {
+      margin-bottom: 8px;
+      padding: 8px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: #e8f5e9;
+    }
+    
+    .option input {
+      margin-right: 10px;
+    }
+    
+    .explanation {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f1f8e9;
+      border-radius: 5px;
+      font-style: italic;
+      display: none;
+    }
+    
+    .submit-btn {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+    }
+    
+    .submit-btn:hover {
+      background-color: #1b5e20;
+    }
+    
+    .wildlife-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #81c784;
+      color: #1b5e20;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    .result-container {
+      margin: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      display: none;
+    }
+    
+    .result-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #1b5e20;
+    }
+    
+    .result-item {
+      margin: 5px 0;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    
+    .correct {
+      background-color: #c8e6c9;
+      color: #2e7d32;
+    }
+    
+    .incorrect {
+      background-color: #ffcdd2;
+      color: #c62828;
+    }
+    
+    .correct-label, .incorrect-label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    
+    .correct-answer {
+      font-weight: bold;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="park-container">
+    <div class="park-header">
+      <h1 class="park-title">Kerala National Parks Quiz</h1>
+    </div>
+    
+    <form id="quiz-form">
+      <div class="question-container">
+        <div class="question">1. Which is the largest national park in Kerala?</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="A"> A) Eravikulam National Park</label>
+          <label class="option"><input type="radio" name="q1" value="B"> B) Periyar National Park</label>
+          <label class="option"><input type="radio" name="q1" value="C"> C) Silent Valley National Park</label>
+          <label class="option"><input type="radio" name="q1" value="D"> D) Mathikettan Shola National Park</label>
+        </div>
+        <div class="explanation" id="exp1">Silent Valley National Park, located in the Palakkad district, is the largest national park in Kerala, covering an area of 237.52 sq. km. It is known for its rich biodiversity and is home to the endangered lion-tailed macaque.</div>
+      </div>
+      
+      <div class="question-container">
+        <div class="question">2. In which district is Eravikulam National Park located?</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q2" value="A"> A) Idukki</label>
+          <label class="option"><input type="radio" name="q2" value="B"> B) Wayanad</label>
+          <label class="option"><input type="radio" name="q2" value="C"> C) Palakkad</label>
+          <label class="option"><input type="radio" name="q2" value="D"> D) Thrissur</label>
+        </div>
+        <div class="explanation" id="exp2">Eravikulam National Park is situated in the Idukki district of Kerala. It is famous for housing the Nilgiri Tahr, a highly endangered species of mountain goat.</div>
+      </div>
+      
+      <div class="question-container">
+        <div class="question">3. Which national park in Kerala is known for the Nilgiri Tahr?</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q3" value="A"> A) Anamudi Shola National Park</label>
+          <label class="option"><input type="radio" name="q3" value="B"> B) Periyar National Park</label>
+          <label class="option"><input type="radio" name="q3" value="C"> C) Eravikulam National Park</label>
+          <label class="option"><input type="radio" name="q3" value="D"> D) Silent Valley National Park</label>
+        </div>
+        <div class="explanation" id="exp3">Eravikulam National Park is home to the largest population of Nilgiri Tahr (Nilgiritragus hylocrius), a mountain goat endemic to the Western Ghats. The park is also famous for the blooming of Neelakurinji flowers once every 12 years.</div>
+      </div>
+      
+      <div class="question-container">
+        <div class="question">4. Which national park in Kerala is a major tiger reserve?</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q4" value="A"> A) Mathikettan Shola National Park</label>
+          <label class="option"><input type="radio" name="q4" value="B"> B) Silent Valley National Park</label>
+          <label class="option"><input type="radio" name="q4" value="C"> C) Periyar National Park</label>
+          <label class="option"><input type="radio" name="q4" value="D"> D) Pampadum Shola National Park</label>
+        </div>
+        <div class="explanation" id="exp4">Periyar National Park, located in Thekkady, is a major tiger reserve in Kerala. It is also famous for its large population of Indian elephants and is centered around the Periyar Lake.</div>
+      </div>
+      
+      <div class="question-container">
+        <div class="question">5. Which national park is part of the Nilgiri Biosphere Reserve?</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q5" value="A"> A) Silent Valley National Park</label>
+          <label class="option"><input type="radio" name="q5" value="B"> B) Pampadum Shola National Park</label>
+          <label class="option"><input type="radio" name="q5" value="C"> C) Anamudi Shola National Park</label>
+          <label class="option"><input type="radio" name="q5" value="D"> D) Periyar National Park</label>
+        </div>
+        <div class="explanation" id="exp5">Silent Valley National Park is part of the Nilgiri Biosphere Reserve, which spans Tamil Nadu, Kerala, and Karnataka. It is a protected area for many rare and endemic species of flora and fauna.</div>
+      </div>
+      
+      <button type="button" class="submit-btn" onclick="checkAnswers()">Submit Quiz</button>
+    </form>
+    
+    <div class="result-container" id="results">
+      <div class="result-title">Quiz Results</div>
+      <div id="result-details"></div>
+    </div>
+    
+    <div class="wildlife-footer">
+      <span>🐘 🐯 🦌 🐒 🦅 🐍 🦋</span>
+      <span>Explore Kerala's National Parks</span>
+      <span>🌿 🌳 🌲 🌺 🌸 🍃 🌴</span>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const correctAnswers = {
+        q1: {value: "C", text: "C) Silent Valley National Park"},
+        q2: {value: "A", text: "A) Idukki"},
+        q3: {value: "C", text: "C) Eravikulam National Park"},
+        q4: {value: "C", text: "C) Periyar National Park"},
+        q5: {value: "A", text: "A) Silent Valley National Park"}
+      };
+      
+      const answerLetterMap = {
+        "A": "A) ",
+        "B": "B) ",
+        "C": "C) ",
+        "D": "D) "
+      };
+      
+      let resultHTML = "";
+      let totalQuestions = 5;
+      let score = 0;
+      
+      // Check answers and show explanations
+      for (let i = 1; i <= totalQuestions; i++) {
+        const questionName = `q${i}`;
+        const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+        
+        // Show explanation for this question
+        document.getElementById(`exp${i}`).style.display = "block";
+        
+        let questionResult = "";
+        
+        if (selectedAnswer) {
+          const selectedValue = selectedAnswer.value;
+          const selectedText = selectedAnswer.parentElement.textContent.trim();
+          
+          if (selectedValue === correctAnswers[questionName].value) {
+            questionResult = `<div class="result-item correct">
+              <span class="correct-label">✓ CORRECT:</span> Question ${i} - You selected ${selectedText}
+            </div>`;
+            score++;
+          } else {
+            questionResult = `<div class="result-item incorrect">
+              <span class="incorrect-label">✗ INCORRECT:</span> Question ${i} - You selected ${selectedText}
+              <div class="correct-answer">Correct answer: ${correctAnswers[questionName].text}</div>
+            </div>`;
+          }
+        } else {
+          questionResult = `<div class="result-item incorrect">
+            <span class="incorrect-label">✗ UNANSWERED:</span> Question ${i}
+            <div class="correct-answer">Correct answer: ${correctAnswers[questionName].text}</div>
+          </div>`;
+        }
+        
+        resultHTML += questionResult;
+      }
+      
+      // Add final score
+      resultHTML += `<div style="margin-top: 15px; font-weight: bold;">Your Score: ${score} out of ${totalQuestions}</div>`;
+      
+      // Show results
+      document.getElementById("result-details").innerHTML = resultHTML;
+      document.getElementById("results").style.display = "block";
+      
+      // Scroll to results
+      document.getElementById("results").scrollIntoView({behavior: "smooth"});
+    }
+  </script>
+</body>
+</html>
